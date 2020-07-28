@@ -27,8 +27,8 @@ $(document).ready(function() {
        var id = $(this).attr("id");
        var loadData = JSON.parse(localStorage.getItem(id));
 
-       if (savedData != null){
-        $(this).children(".description").val(savedData);
+       if (loadData != null){
+        $(this).children(".description").val(loadData);
       }
        // check if we've moved past this time
        
@@ -57,10 +57,13 @@ $(document).ready(function() {
  
    // set up interval to check if current time needs to be updated
    // which means execute hourUpdater function every 15 seconds
- 
-   // load any saved data from localStorage
-   
- 
+   function timeUpdate(){
+    setTimeout(ticker, 1000*15);
+    console.log("Time is Updating");
+    hourUpdater();
+  }
+  timeUpdate();
+  
    // display current day on page
    $("#currentDay").text(moment().format("dddd, MMMM Do"));
  });
