@@ -23,18 +23,33 @@ $(document).ready(function() {
        var blockHour = parseInt($(this).attr("id").split("-")[1]);
  
        console.log("block hour:", blockHour);
- 
+      
+       var id = $(this).attr("id");
+       var loadData = JSON.parse(localStorage.getItem(id));
+
+       if (savedData != null){
+        $(this).children(".description").val(savedData);
+      }
        // check if we've moved past this time
        
        // if the current hour is greater than the block hour
        // then add class "past"
- 
+      if (currentHour > blockHour) {
+        $(this).addClass('past')
+      }
        // if they are equal
        // then remove class "past" and add class "present"
- 
+      else if (currentHour == blockHour) {
+        $(this).removeClass('past');
+        $(this).addClass('present');
+      }
        // else
        // remove class "past", remove class "present", add class "future"
-       
+      else {
+        $(this).removeClass('past');
+        $(this).removeClass('present');
+        $(this).addClass('future');
+      }
      });
    }
  
