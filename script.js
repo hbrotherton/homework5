@@ -58,12 +58,12 @@ $(document).ready(function() {
    // set up interval to check if current time needs to be updated
    // which means execute hourUpdater function every 15 seconds
    function timeUpdate(){
-    setTimeout(ticker, 1000*15);
+    setTimeout(timeUpdate, 1000*15);
     console.log("Time is Updating");
     hourUpdater();
   }
   timeUpdate();
-  
+
    // display current day on page
    $("#currentDay").text(moment().format("dddd, MMMM Do"));
  });
